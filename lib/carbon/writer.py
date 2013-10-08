@@ -69,6 +69,7 @@ def optimalWriteOrder():
         # when a bunch of new metrics are received.
         try:
           MetricCache.pop(metric)
+          log.msg("Dropping new metric %s - exceeded MAX_CREATES_PER_MINUTE (%d >= %d)" % (metric, createCount, settings.MAX_CREATES_PER_MINUTE))
         except KeyError:
           pass
 
